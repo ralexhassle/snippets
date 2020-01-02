@@ -42,3 +42,21 @@ export function contrast(colorHex: string | undefined,
     return rgbToYIQ(rgb) >= threshold ? '#000' : '#fff';
 }
 ```
+
+## Splitting arrays into chunks
+This is a function for splitting arrays into chunks
+
+```ts
+export class ArrayUtils {
+  static chunk<T>(array: T[], chunkSize: number): T[][] {
+    const chunks: T[][] = [];
+
+    let index = 0;
+    while (index < array.length) {
+      chunks.push(array.slice(index, index + chunkSize));
+      index += chunkSize;
+    }
+    return chunks;
+  }
+}
+```
