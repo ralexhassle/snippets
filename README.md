@@ -60,3 +60,16 @@ export class ArrayUtils {
   }
 }
 ```
+
+## Reading a file, formating its content
+
+```bash
+while read line
+do
+   my_var="$my_var, '$line'"
+done < list
+
+my_var="${my_var#, }"                # Trim off leading comma and space
+
+echo "SELECT id, email, last_name, first_name, bic, iban FROM users WHERE id IN($my_var) ORDER BY FIELD(id,$my_var);" | pbcopy
+```
